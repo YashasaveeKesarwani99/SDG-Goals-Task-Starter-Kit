@@ -4,6 +4,8 @@
  * @format
  */
 
+import Data from "./Data";
+
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+export default combineReducers({ Data });
