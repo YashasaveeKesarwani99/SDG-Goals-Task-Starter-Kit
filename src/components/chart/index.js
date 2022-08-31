@@ -13,7 +13,7 @@ export default function ChartComponent() {
 	const labels = Data.map((obj) => obj.area_name);
 
 	const options = {
-		responsive: true,
+		maintainAspectRatio: false,
 		plugins: {
 			legend: {
 				position: "top",

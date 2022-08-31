@@ -1,8 +1,9 @@
 /** @format */
 
 .container-chart {
-	width: 100%;
+	width: 90%;
 	overflow-x: scroll;
 	height: 100%;
 	background: white;
+	margin-left: 20px;
 }
