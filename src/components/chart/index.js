@@ -20,6 +20,7 @@ export default function ChartComponent() {
 			},
 			title: {
 				display: true,
+				position: "left",
 				text: "SDG scores",
 			},
 		},
@@ -36,6 +37,7 @@ export default function ChartComponent() {
 							{
 								label: "score",
 								data: Data.map((obj) => obj.value.value),
+								backgroundColor: "rgba(53, 162, 235, 0.5)",
 							},
 						],
 					}}

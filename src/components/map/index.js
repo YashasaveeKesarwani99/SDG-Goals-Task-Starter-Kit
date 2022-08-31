@@ -50,7 +50,9 @@ export default function Map() {
 
 	const onMouseEnter = (geo, current) => {
 		return () => {
-			setTooltipContent(`${geo.properties.name}: ${current.value.value}`);
+			setTooltipContent(
+				`${geo.properties.name}: ${current ? current.value.value : "NA"}`
+			);
 		};
 	};
 
@@ -61,9 +63,12 @@ export default function Map() {
 	return (
 		<div
 			className='map'
-			style={{ position: "relative", overflow: "hidden", background: "white" }}>
+			style={{
+				position: "relative",
+				overflow: "hidden",
+				background: "rgba(53, 162, 235, 0.5)",
+			}}>
 			<ReactTooltip>{tooltipContent}</ReactTooltip>
-
 			<ComposableMap
 				style={{
 					position: "absolute",
