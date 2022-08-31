@@ -1,13 +1,43 @@
 /** @format */
-
 import React from "react";
-
+import { Bar } from "react-chartjs-2";
 import { useSelector } from "react-redux";
+import { Chart, registerables } from "chart.js";
 
-export default function Chart() {
-	const data = useSelector((state) => state.Data);
+export default function ChartComponent() {
+	Chart.register(...registerables);
 
-	console.log(data);
+	const Data = useSelector((state) => state.Data);
 
-	return <div className='chart'>Chart Here (Bar Chart preferred)</div>;
+	const labels = Data.map((obj) => obj.area_name);
+
+	const options = {
+		responsive: true,
+		plugins: {
+			legend: {
+				position: "top",
+			},
+			title: {
+				display: true,
+				text: "Chart.js Bar Chart",
+			},
+		},
+	};
+
+	return (
+		<div className='chart'>
+			<Bar
+				options={options}
+				data={{
+					labels,
+					datasets: [
+						{
+							label: "dataset 1",
+							data: Data.map((obj) => obj.value.value),
+						},
+					],
+				}}
+			/>
+		</div>
+	);
 }
