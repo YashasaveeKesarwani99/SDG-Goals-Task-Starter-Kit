@@ -1,1 +1,21 @@
 /** @format */
+
+.control {
+	width: 100%;
+	height: auto;
+	display: flex;
+	gap: 10%;
+}
+
+.goal {
+	padding: 5px;
+}
+
+.goal > select {
+	padding: 8px;
+	outline: none;
+	border: 1px solid lightblue;
+	border-radius: 5px;
+	font-weight: 700;
+	color: black;
+}

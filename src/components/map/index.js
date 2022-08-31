@@ -59,9 +59,18 @@ export default function Map() {
 	};
 
 	return (
-		<div className='map'>
+		<div
+			className='map'
+			style={{ position: "relative", overflow: "hidden", background: "white" }}>
 			<ReactTooltip>{tooltipContent}</ReactTooltip>
+
 			<ComposableMap
+				style={{
+					position: "absolute",
+					height: "80vh",
+					border: "none",
+					outline: "none",
+				}}
 				projectionConfig={PROJECTION_CONFIG}
 				projection='geoMercator'
 				width={600}

@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import "./app.css";
-import Goal from "./components/controls/goal/goal";
-import Year from "./components/controls/year/year";
+
 import Chart from "./components/chart";
 import Map from "./components/map";
+import Controls from "./components/controls";
 
 //importing actions
 import { actionName } from "./actions";
@@ -33,10 +33,7 @@ function App() {
 	return (
 		<div className='App'>
 			<div className='side'>
-				<div className='control'>
-					<Goal setInputs={setInputs} />
-					<Year setInputs={setInputs} />
-				</div>
+				<Controls setInputs={setInputs} />
 				<Chart />
 			</div>
 			<Map />

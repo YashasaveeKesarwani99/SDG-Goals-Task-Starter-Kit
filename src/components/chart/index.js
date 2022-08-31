@@ -1,5 +1,6 @@
 /** @format */
 import React from "react";
+import "./style.css";
 import { Bar } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 import { Chart, registerables } from "chart.js";
@@ -19,25 +20,27 @@ export default function ChartComponent() {
 			},
 			title: {
 				display: true,
-				text: "Chart.js Bar Chart",
+				text: "SDG scores",
 			},
 		},
 	};
 
 	return (
-		<div className='chart'>
-			<Bar
-				options={options}
-				data={{
-					labels,
-					datasets: [
-						{
-							label: "dataset 1",
-							data: Data.map((obj) => obj.value.value),
-						},
-					],
-				}}
-			/>
+		<div className='container-chart'>
+			<div className='chart'>
+				<Bar
+					options={options}
+					data={{
+						labels,
+						datasets: [
+							{
+								label: "score",
+								data: Data.map((obj) => obj.value.value),
+							},
+						],
+					}}
+				/>
+			</div>
 		</div>
 	);
 }
