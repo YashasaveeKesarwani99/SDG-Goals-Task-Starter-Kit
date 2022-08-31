@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import "./app.css";
-import Goal from "./components/controls/goal";
-import Year from "./components/controls/year";
+import Goal from "./components/controls/goal/goal";
+import Year from "./components/controls/year/year";
 import Chart from "./components/chart";
 import Map from "./components/map";
 

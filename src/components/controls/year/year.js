@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { YEARS } from "../../config";
+import { YEARS } from "../../../config";
 
 export default function Year({ setInputs }) {
 	return (
