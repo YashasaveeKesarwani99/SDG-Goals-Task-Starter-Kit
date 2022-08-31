@@ -7,7 +7,7 @@
 }
 
 .side {
-	width: 40%;
+	width: 45%;
 	height: 100%;
 	flex-direction: column;
 	display: flex;
@@ -19,7 +19,7 @@
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	width: 70vw;
+	width: 2000px;
 	padding: 20px;
 }
 
