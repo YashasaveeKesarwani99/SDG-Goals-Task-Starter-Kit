@@ -22,9 +22,12 @@ function App() {
 		goal: "",
 	});
 
+	const [ut, setUt] = useState(false);
+
+	//conditional dispatching of action when the fields have been validated
 	useEffect(() => {
-		if (inputs.year && inputs.goal.length) {
-			dispatch(actionName(inputs));
+		if (inputs.year && inputs.goal.length && inputs.goal !== "Select Goal") {
+			dispatch(actionName(inputs, ut));
 		}
 	}, [inputs.year, inputs.goal]);
 
@@ -32,7 +35,7 @@ function App() {
 		<div className='App'>
 			<div className='side'>
 				<Controls setInputs={setInputs} />
-				<Chart />
+				<Chart setUt={setUt} />
 			</div>
 			<Map />
 		</div>

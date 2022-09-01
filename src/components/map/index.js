@@ -2,14 +2,24 @@
 
 import React, { useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+
+//importing redux elements
 import { useSelector } from "react-redux";
+
+//for scaling graph
 import { scaleQuantile } from "d3-scale";
+
+//for showing tooltip as we move across the graph of INDIA
 import ReactTooltip from "react-tooltip";
 
+//topographical data of INDIA
 import INDIA_TOPO_JSON from "./india.topo.json";
 
 export default function Map() {
+	//storing the tooltip state
 	const [tooltipContent, setTooltipContent] = useState("");
+
+	//mapping the "Data" global state in Data
 	const Data = useSelector((state) => state.Data);
 
 	// Red Variants
@@ -25,11 +35,13 @@ export default function Map() {
 		"#782618",
 	];
 
+	//centering the graph according to the desired co-ordinates
 	const PROJECTION_CONFIG = {
 		scale: 350,
 		center: [78.9629, 22.5937],
 	};
 
+	//configuring geographical styling
 	const geographyStyle = {
 		default: {
 			outline: "none",
@@ -48,6 +60,7 @@ export default function Map() {
 		.domain(Data.map((d) => d.value.value))
 		.range(COLOR_RANGE);
 
+	//defining the mouse enter and leave event listeners
 	const onMouseEnter = (geo, current) => {
 		return () => {
 			setTooltipContent(
@@ -55,7 +68,6 @@ export default function Map() {
 			);
 		};
 	};
-
 	const onMouseLeave = () => {
 		setTooltipContent("");
 	};

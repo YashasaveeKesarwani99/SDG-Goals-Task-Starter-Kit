@@ -5,10 +5,10 @@ import DATA2019 from "../data/2019.json";
 import DATA2020 from "../data/2020.json";
 
 //Action creators
-
 export const actionName =
 	({ year, goal }) =>
 	(dispatch) => {
+		//conditionally creating arrays according to the year and goal chosed
 		if (year === "2018") {
 			const resArray = DATA2018.map((obj) => {
 				return {

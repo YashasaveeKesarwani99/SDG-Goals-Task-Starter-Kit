@@ -1,17 +1,26 @@
 /** @format */
 import React from "react";
 import "./style.css";
+
+//importing chart elements from react chartjs
 import { Bar } from "react-chartjs-2";
-import { useSelector } from "react-redux";
 import { Chart, registerables } from "chart.js";
 
-export default function ChartComponent() {
+//importing redux elements
+import { useSelector, useDispatch } from "react-redux";
+
+export default function ChartComponent({ setUt }) {
+	//registering neccesary elements of chartjs
 	Chart.register(...registerables);
 
+	//mapping the global "Data" state in Data
 	const Data = useSelector((state) => state.Data);
 
-	const labels = Data.map((obj) => obj.area_name);
+	//initializing dispatch component
+	const dispatch = useDispatch();
 
+	//configuration of chart
+	const labels = Data.map((obj) => obj.area_name);
 	const options = {
 		maintainAspectRatio: false,
 		plugins: {
@@ -27,22 +36,24 @@ export default function ChartComponent() {
 	};
 
 	return (
-		<div className='container-chart'>
-			<div className='chart'>
-				<Bar
-					options={options}
-					data={{
-						labels,
-						datasets: [
-							{
-								label: "score",
-								data: Data.map((obj) => obj.value.value),
-								backgroundColor: "rgba(53, 162, 235, 0.5)",
-							},
-						],
-					}}
-				/>
+		<>
+			<div className='container-chart'>
+				<div className='chart'>
+					<Bar
+						options={options}
+						data={{
+							labels,
+							datasets: [
+								{
+									label: "score",
+									data: Data.map((obj) => obj.value.value),
+									backgroundColor: "rgba(53, 162, 235, 0.5)",
+								},
+							],
+						}}
+					/>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
