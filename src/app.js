@@ -16,17 +16,15 @@ import { useDispatch } from "react-redux";
 function App() {
 	const dispatch = useDispatch();
 
+	//parent state storing the year and specific goal entered by the user
 	const [inputs, setInputs] = useState({
 		year: 0,
 		goal: "",
 	});
 
 	useEffect(() => {
-		var local_year = inputs.year;
-		var local_goal = inputs.goal;
-
-		if (local_year && local_goal.length) {
-			dispatch(actionName({ year: local_year, goal: local_goal }));
+		if (inputs.year && inputs.goal.length) {
+			dispatch(actionName(inputs));
 		}
 	}, [inputs.year, inputs.goal]);
 
