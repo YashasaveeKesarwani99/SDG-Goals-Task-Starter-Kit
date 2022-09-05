@@ -9,7 +9,7 @@ import { Chart, registerables } from "chart.js";
 //importing redux elements
 import { useSelector, useDispatch } from "react-redux";
 
-export default function ChartComponent({ setUt }) {
+export default function ChartComponent() {
 	//registering neccesary elements of chartjs
 	Chart.register(...registerables);
 

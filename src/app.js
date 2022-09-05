@@ -3,18 +3,15 @@
 import { useEffect, useState } from "react";
 import "./app.css";
 
-import Chart from "./components/chart";
-import Map from "./components/map";
-import Controls from "./components/controls";
+//importing components
+import Main from "./routes/main";
+import ChartPage from "./routes/chartPage";
 
-//importing actions
-import { actionName } from "./actions";
-
-//importes for managing state
-import { useDispatch } from "react-redux";
+//importing routing elements
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
-	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	//parent state storing the year and specific goal entered by the user
 	const [inputs, setInputs] = useState({
@@ -22,23 +19,21 @@ function App() {
 		goal: "",
 	});
 
-	const [ut, setUt] = useState(false);
-
 	//conditional dispatching of action when the fields have been validated
 	useEffect(() => {
 		if (inputs.year && inputs.goal.length && inputs.goal !== "Select Goal") {
-			dispatch(actionName(inputs, ut));
+			navigate(`/${inputs.year}/${inputs.goal}`);
 		}
 	}, [inputs.year, inputs.goal]);
 
 	return (
-		<div className='App'>
-			<div className='side'>
-				<Controls setInputs={setInputs} />
-				<Chart setUt={setUt} />
-			</div>
-			<Map />
-		</div>
+		<Routes>
+			<Route
+				path='/:year/:goal'
+				element={<ChartPage setInputs={setInputs} inputs={inputs} />}
+			/>
+			<Route path='/' element={<Main setInputs={setInputs} inputs={inputs} />} />
+		</Routes>
 	);
 }
 

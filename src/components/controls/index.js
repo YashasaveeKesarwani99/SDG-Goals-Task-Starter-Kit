@@ -3,11 +3,11 @@ import "./style.css";
 import Goal from "./goal/goal";
 import Year from "./year/year";
 
-const Controls = ({ setInputs }) => {
+const Controls = ({ setInputs, inputs }) => {
 	return (
 		<div className='control'>
-			<Goal setInputs={setInputs} />
-			<Year setInputs={setInputs} />
+			<Goal setInputs={setInputs} inputs={inputs} />
+			<Year setInputs={setInputs} inputs={inputs} />
 		</div>
 	);
 };

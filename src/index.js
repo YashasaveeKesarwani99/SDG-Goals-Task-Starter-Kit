@@ -12,13 +12,18 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
 
+//importing contents for routing
+import { BrowserRouter } from "react-router-dom";
+
 //creating store for global state manangement
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")

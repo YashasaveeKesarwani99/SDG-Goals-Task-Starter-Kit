@@ -3,7 +3,7 @@
 import React from "react";
 import { GOALS_LIST } from "../../../config";
 
-export default function Goal({ setInputs }) {
+export default function Goal({ setInputs, inputs }) {
 	return (
 		<div className='goal'>
 			<select
@@ -14,10 +14,13 @@ export default function Goal({ setInputs }) {
 							goal: e.target.value,
 						};
 					})
-				}>
+				}
+				value={inputs.goal}>
 				<option>Select Goal</option>
 				{GOALS_LIST.map((goal) => (
-					<option value={goal.split(":")[0]}>{goal}</option>
+					<option value={goal} key={goal}>
+						{goal}
+					</option>
 				))}
 			</select>
 		</div>
